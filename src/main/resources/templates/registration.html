@@ -1,0 +1,221 @@
+<!--  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 50px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  .form-container {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  .show-password-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .show-password-checkbox {
+    margin-right: 5px;
+  }
+</style>
+<script>
+  // JavaScript for toggling password visibility
+  document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById("password");
+    const showPasswordCheckbox = document.getElementById("showPassword");
+
+    showPasswordCheckbox.addEventListener("change", function() {
+      if (this.checked) {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    });
+  });
+</script>
+</head>
+<body>
+  <body>
+  <h1>Registration</h1>
+  <div class="form-container">
+    <form action="/register" method="POST">
+      <input type="number" class="form-input" name="empid" placeholder="Employee ID" required>
+      <input type="text" class="form-input" name="name" placeholder="Name" required>
+      <input type="email" class="form-input" name="email" placeholder="Email" required>
+      <input type="password" class="form-input" name="password" placeholder="Password" id="password" required>
+      <label class="show-password-label" for="showPassword">
+        <input type="checkbox" id="showPassword" class="show-password-checkbox"> Show Password
+      </label>
+      <input type="password" class="form-input" name="confirmPassword" placeholder="Confirm Password" required>
+      <select class="form-dropdown" name="team" required>
+        <option value="" disabled selected>Select Team</option>
+        <option value="sales">Sales</option>
+        <option value="project">Project</option>
+      </select>
+      <button type="submit" class="form-button">Register</button>
+    </form>
+  </div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+   body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+     background-image: url('register.jpg');
+    background-repeat: no-repeat;
+     background-color:#008080;
+  }
+
+  .form-container {
+    width: 400px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .form-input, .form-dropdown {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f8f8;
+    transition: border-color 0.3s;
+  }
+
+  .form-input:focus, .form-dropdown:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+
+  .form-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+
+  .show-password-label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .show-password-checkbox {
+    margin-right: 5px;
+  }
+</style>
+<script>
+  // JavaScript for toggling password visibility
+  document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById("password");
+    const showPasswordCheckbox = document.getElementById("showPassword");
+
+    showPasswordCheckbox.addEventListener("change", function() {
+      if (this.checked) {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    });
+  });
+</script>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Registration</h1>
+    <form action="/register" method="POST">
+      <input type="number" class="form-input" name="empid" placeholder="Employee ID" required>
+      <input type="text" class="form-input" name="name" placeholder="Name" required>
+      <input type="email" class="form-input" name="email" placeholder="Email" required>
+      <input type="password" class="form-input" name="password" placeholder="Password" id="password" required>
+      <label class="show-password-label" for="showPassword">
+        <input type="checkbox" id="showPassword" class="show-password-checkbox"> Show Password
+      </label>
+      <input type="password" class="form-input" name="confirmPassword" placeholder="Confirm Password" required>
+      <select class="form-dropdown" name="team" required>
+        <option value="" disabled selected>Select Team</option>
+        <option value="sales">Sales</option>
+        <option value="project">Project</option>
+      </select>
+      <button type="submit" class="form-button">Register</button>
+    </form>
+  </div>
+</body>
+</html>

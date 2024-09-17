@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Order</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background-color: #007BFF;
+    padding: 10px 0;
+  }
+
+  .navbar-brand {
+    font-size: 24px;
+    color: #fff;
+    margin-left: 20px;
+  }
+
+  .container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-top: 30px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .form-input,
+  .form-dropdown {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .form-dropdown {
+    background-color: #fff;
+  }
+
+  .form-button {
+    padding: 12px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">Sales Management</div>
+  </nav>
+
+  <div class="container">
+    <a href="/sales" class="btn btn-secondary mb-3">Back to Sales Page</a>
+    <h1>Edit Order</h1>
+    <form action="/modifyOrder" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="order_Id" th:value="${order.order_Id}">
+      <input type="text" class="form-input" name="order_Title" placeholder="Order Title" th:value="${order.order_Title}" required>
+      <input type="text" class="form-input" name="order_Description" placeholder="Order Description" th:value="${order.order_Description}" required>
+      <input type="text" class="form-input" name="sales_ReferenceId" placeholder="Sales Reference ID" th:value="${order.sales_ReferenceId}" required>
+      <input type="text" class="form-input" name="endCustomer_Name" placeholder="End Customer Name" th:value="${order.endCustomer_Name}" required>
+      <input type="text" class="form-input" name="customer_Name" placeholder="Customer Name" th:value="${order.customer_Name}" required>
+      <input type="text" class="form-input" name="project_Location" placeholder="Project Location" th:value="${order.project_Location}" required>
+      <input type="file" class="form-input" name="scopeOf_workDocument" placeholder="Scope of Work Document" th:value="${order.scopeOf_workDocument}"  accept=".pdf" required>
+      <select class="form-dropdown" name="projectImplementation_Mode" required>
+        <option value="remote" th:selected="${order.projectImplementation_Mode == 'remote'}">Remote</option>
+        <option value="onsite" th:selected="${order.projectImplementation_Mode == 'onsite'}">Onsite</option>
+        <option value="hybrid" th:selected="${order.projectImplementation_Mode == 'hybrid'}">Hybrid</option>
+      </select>
+      <input type="text" class="form-input" name="status" placeholder="Status" th:value="${order.status}" required>
+      <input type="text" class="form-input" name="assigned_To" placeholder="Assigned To" th:value="${order.assigned_To}" required>
+      <button type="submit" class="form-button">Save Changes</button>
+    </form>
+  </div>
+</body>
+</html>

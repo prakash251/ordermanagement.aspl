@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #navbar {
+      background-color: #007BFF;
+      color: white;
+      overflow: hidden;
+    }
+    #navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    #navbar a:hover {
+      background-color: #0056b3;
+    }
+    #user-profile {
+      float: right;
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 16px;
+    }
+    #user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+      margin: 20px auto;
+      background-color: white;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      margin: 20px auto;
+      max-width: 400px;
+    }
+    .search-input {
+      flex-grow: 1;
+      margin-right: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+    .search-button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    .search-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<h1>Orders</h1>
+  <div class="search-container">
+    <input type="text" id="orderIdInput" class="search-input" placeholder="Enter Order ID">
+    <button class="search-button" onclick="searchOrder()">Search</button>
+  </div>
+
+  <table>
+   <tr>
+      <th>Order ID</th>
+      <th>Order Title</th>
+      <th>Order Description</th>
+      <th>Sales Reference ID</th>
+      <th>End Customer Name</th>
+      <th>Customer Name</th>
+      <th>Project Location</th>
+      <th>Scope of Work Document</th>
+      <th>Project Implementation Mode</th>
+      <th>Status</th>
+      <th>Assigned To</th>
+    </tr>
+     <tr th:each="order : ${orders}">
+      <td th:text="${order.order_Id}"></td>
+      <td th:text="${order.order_Title}"></td>
+      <td th:text="${order.order_Description}"></td>
+      <td th:text="${order.sales_ReferenceId}"></td>
+      <td th:text="${order.endCustomer_Name}"></td>
+      <td th:text="${order.customer_Name}"></td>
+      <td th:text="${order.project_Location}"></td>
+<td>
+  <a th:href="'file:///C:/salesOrderSpringboot/orders/' + ${order.scopeOf_workDocument}" target="_blank" th:text="${order.scopeOf_workDocument}">Open PDF</a>
+</td>
+      <td th:text="${order.projectImplementation_Mode}"></td>
+      <td th:text="${order.status}"></td>
+      <td th:text="${order.assigned_To}"></td>
+    </tr>
+  </table>
+
+  <script>
+    // JavaScript code for highlighting the row with matching Order ID
+    function searchOrder() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("orderIdInput");
+      filter = input.value.toUpperCase();
+      table = document.querySelector("table");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those that don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; // Change 0 to the column index you want to search
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.backgroundColor = "#28a745"; // Highlight in green
+          } else {
+            tr[i].style.backgroundColor = "";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
